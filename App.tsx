@@ -3,9 +3,9 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import CalenderPicker from './components/CalenderPicker';
 import TodayReducer  from './reducer/TodayReducer';
-import Calender from './components/Calender';
+import CalenderConatiner from './containers/Calender';
 import {createStackNavigator} from '@react-navigation/stack';
-import {useNavigation, NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 
 const store = createStore(TodayReducer);
 
@@ -22,7 +22,7 @@ const App : FC = () => {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="CalenderPicker">
           <Stack.Screen name="CalenderPicker" component={CalenderPicker} options={{headerShown:false}} />
-          <Stack.Screen name="Calender" component={Calender} options={{headerShown:false}} />
+          <Stack.Screen name="Calender" component={CalenderConatiner} options={{headerShown:false}} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

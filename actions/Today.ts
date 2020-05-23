@@ -1,5 +1,6 @@
 export enum TodayActionType{
-    ADD = 'ADD'
+    ADD = 'ADD',
+    DEL = 'DEL'
 }
 export interface TodayAction{
     type : TodayActionType

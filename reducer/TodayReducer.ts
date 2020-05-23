@@ -7,10 +7,13 @@ export type TodayState = {
 const initialToday : TodayState = { date :new Date()};
 
 const reducer = (today : TodayState = initialToday, action : TodayAction) : TodayState =>{
+    let date : Date = today.date;
     switch (action.type){
         case TodayActionType.ADD:
-            let date : Date = today.date;
             date.setDate(date.getDate()+1);
+            return {date: date};
+        case TodayActionType.DEL:
+            date.setDate(date.getDate()-1);
             return {date: date};
         default:
             return today;

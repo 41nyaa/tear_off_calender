@@ -1,31 +1,23 @@
 import React, { FC } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import TodayContainer from '../containers/Today';
 import ProverbContainer from '../containers/Proverb';
-import { TodayActionType } from '../actions/Today';
-import { TodayState } from '../reducer/TodayReducer';
-import { useRoute, RouteProp } from '@react-navigation/native';
-import { RootStackParamList } from '../App';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-type CalenderRouteProps = RouteProp<RootStackParamList,'Calender'>;
+type CalenderProps = {
+  onTouch : () => void;
+  path    : string;
+  date    : Date;
+}
 
-const Calender: FC = () => {
-  const dispatch = useDispatch();
-  const date = useSelector((state: TodayState) => new Date(state.date));
-  const {path} = useRoute<CalenderRouteProps>().params;
-
-  const touch = (): void => {
-    dispatch({ type: TodayActionType.ADD });
-  }
-
+const CalenderComponent: FC<CalenderProps> = ( props : CalenderProps ) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={(event) => touch()}>
-        <TodayContainer date={date} />
-        <ProverbContainer path={path} date={date} />
+      <TouchableOpacity onPress={(event) => props.onTouch()}> 
+        <TodayContainer date={props.date} />
+        <ProverbContainer path={props.path} date={props.date} />
       </TouchableOpacity>
-    </View>
+      </View>
   );
 }
 
@@ -38,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Calender;
+export default CalenderComponent;

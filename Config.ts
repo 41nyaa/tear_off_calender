@@ -1,0 +1,16 @@
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+
+var firebaseConfig ={
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
+};
+
+firebase.initializeApp(firebaseConfig);
+export default firebase;
